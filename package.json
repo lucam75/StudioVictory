@@ -3,7 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "pm2 start pm2.json"
+    "preinstall": "npm prune",
+    "postinstall": "bower prune; bower install; grunt githooks"
+  },
+  "author": "Luis Campos",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:lucam75/studiovictory.git"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -21,6 +28,10 @@
   },
   "devDependencies": {
     "bower": "latest",
-    "grunt": "latest"
+    "grunt": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-jscs": "latest",
+    "grunt-githooks": "latest",
+    "grunt-shell": "latest"
   }
 }

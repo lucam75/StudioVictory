@@ -1,12 +1,8 @@
 'use strict';
 
 // Loading dependencies
-
 var express = require('express');
 var path = require('path');
-
-
-//var favicon = require('serve-favicon');
 
 // Initializing express application
 var app = express();
@@ -17,7 +13,9 @@ var config = require('./lib/config');
 // Body Parser
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 // Logger
 var logger = require('morgan');
@@ -41,7 +39,6 @@ app.engine(config().views.engine, exphbs({
   layoutsDir: __dirname + '/views/layouts',
   partialsDir: __dirname + 'views/partials'
 }));
-
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -83,7 +80,7 @@ app.use(function(err, req, res, next) {
 });
 
 // Export application or start the server
-if (!!module.parent){
+if (!!module.parent) {
   module.exports = app;
 } else {
   app.listen(config().serverPort);
